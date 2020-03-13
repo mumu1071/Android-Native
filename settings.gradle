@@ -1,0 +1,2 @@
+rootProject.name='本地Demo'
+include ':app'
