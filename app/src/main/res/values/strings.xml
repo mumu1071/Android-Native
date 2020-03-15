@@ -22,4 +22,5 @@
     <string name="text0">普通写法(Retrofit)</string>
     <string name="text1">普通写法(Retrofit+Rxjava)</string>
     <string name="text2">MVP+Retrofit+Rxjava</string>
+    <string name="title_activity_demo_fragment">DemoFragmentActivity</string>
 </resources>

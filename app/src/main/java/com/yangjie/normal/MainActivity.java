@@ -1,11 +1,12 @@
 package com.yangjie.normal;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.yangjie.normal.demo.listview.ListViewActivity;
+import com.yangjie.normal.demo.service.ServiceActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ListViewActivity.class));
             }
         });
+
+        Intent intent = new Intent(this, ServiceActivity.class);
+        startActivity(intent);
+
 
     }
 }

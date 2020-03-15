@@ -1,27 +1,35 @@
 package com.yangjie.normal.app.retrofit;
 
+import android.util.Log;
 
 import com.wuxiaolong.androidutils.library.BuildConfig;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by WuXiaolong on 2016/3/24.
- * github:https://github.com/WuXiaolong/
- * 微信公众号：吴小龙同学
- * 个人博客：http://wuxiaolong.me/
- */
 public class ApiClient {
     public static Retrofit mRetrofit;
+
+    public class AInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Log.d("lpy","A 拦截请求");
+            Response response = chain.proceed(chain.request());
+            Log.d("lpy","A 拦截响应");
+            return response;
+        }
+    }
 
     public static Retrofit retrofit() {
         if (mRetrofit == null) {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
             if (BuildConfig.DEBUG) {
                 // Log信息拦截器
                 HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
