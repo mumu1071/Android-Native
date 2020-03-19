@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,7 +14,12 @@ import android.widget.TextView;
 import com.yangjie.normal.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class ListViewActivity extends AppCompatActivity {
 
@@ -27,13 +33,13 @@ public class ListViewActivity extends AppCompatActivity {
 
         //初始化数据
         List<String> datas = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             datas.add("item " + i);
         }
 
         recyclerView = findViewById(R.id.recycler_view);
         //设置LayoutManager为LinearLayoutManager
-        LinearLayoutManager layoutManager= new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         //设置Adapter
         recyclerView.setAdapter(new GeneralAdapter(this, datas));
@@ -75,6 +81,13 @@ public class ListViewActivity extends AppCompatActivity {
             return datas.size();
         }
 
+        @Override
+        public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
+            Log.i("yangjie", datas.get(position));
+            super.onBindViewHolder(holder, position, payloads);
+        }
+
+
         //继承RecyclerView.ViewHolder抽象类的自定义ViewHolder
         class MyViewHolder extends RecyclerView.ViewHolder {
             TextView textView;
@@ -85,4 +98,36 @@ public class ListViewActivity extends AppCompatActivity {
             }
         }
     }
+
+    class Advertising {
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(2);
+
+        //未上报
+        Map<String,String> commitMap = new HashMap<>();
+
+        //已上报
+        Map<String,String> commitedMap = new HashMap<>();
+
+        //清空
+
+        public void commit(String item) {
+            //校验是否已上报
+            commitedMap.containsKey(item);
+            //
+            scheduledThreadPool.schedule(new Runnable() {
+                @Override
+                public void run() {
+                    //是否已上报
+
+                    //再校验
+//                    commitMap.containsKey()
+
+                    System.out.println("delay 3 seconds");
+                }
+            }, 3, TimeUnit.SECONDS);
+        }
+
+    }
+
+
 }

@@ -13,6 +13,22 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 public class ReenrantLockTest {
+
+    static class MyReenrantLock implements Runnable {
+        //向上转型
+        private Lock lock = new ReentrantLock();
+
+        public void run() {
+            //上锁
+            lock.lock();
+            for (int i = 0; i < 5; i++) {
+                System.out.println("当前线程名： " + Thread.currentThread().getName() + " ,i = " + i);
+            }
+            //释放锁
+            lock.unlock();
+        }
+    }
+
     public static void main(String[] args) {
         MyReenrantLock myReenrantLock = new MyReenrantLock();
         Thread thread1 = new Thread(myReenrantLock);
@@ -24,17 +40,5 @@ public class ReenrantLockTest {
     }
 }
 
-class MyReenrantLock implements Runnable {
-    //向上转型
-    private Lock lock = new ReentrantLock();
-    public void run() {
-        //上锁
-        lock.lock();
-        for (int i = 0; i < 5; i++) {
-            System.out.println("当前线程名： " + Thread.currentThread().getName() + " ,i = " + i);
-        }
-        //释放锁
-        lock.unlock();
-    }
-}
+
 

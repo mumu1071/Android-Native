@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.yangjie.normal.demo.listview.ListViewActivity;
-import com.yangjie.normal.demo.service.ServiceActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ListViewActivity.class));
             }
         });
-
-        Intent intent = new Intent(this, ServiceActivity.class);
-        startActivity(intent);
-
+        findViewById(R.id.btn_demo_list_view).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return false;//点击事件不会被执行
+            }
+        });
 
     }
 }
