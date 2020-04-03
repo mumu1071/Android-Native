@@ -29,7 +29,7 @@ public class ImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.demo_activity_image);
         imageView= (ImageView) findViewById(R.id.imageview_test);
         setBitmapFromNet();
 

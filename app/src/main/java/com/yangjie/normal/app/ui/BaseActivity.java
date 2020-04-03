@@ -28,12 +28,6 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 
-/**
- * Created by WuXiaolong on 2015/9/23.
- * github:https://github.com/WuXiaolong/
- * 微信公众号：吴小龙同学
- * 个人博客：http://wuxiaolong.me/
- */
 public abstract class BaseActivity extends AppCompatActivity {
     public Activity mActivity;
     private CompositeDisposable mCompositeDisposable;

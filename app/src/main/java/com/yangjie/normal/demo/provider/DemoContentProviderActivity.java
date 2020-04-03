@@ -19,15 +19,7 @@ public class DemoContentProviderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        findViewById(R.id.btn_demo_list_view).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DemoContentProviderActivity.this, ListViewActivity.class));
-            }
-        });
-
+        setContentView(R.layout.demo_hook_activity_main);
 
     }
 
