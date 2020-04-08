@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".demo.hook.HookActivity">
+    tools:context=".demo.hooktest.HookActivity">
 
     <Button
         android:id="@+id/btn_hook"

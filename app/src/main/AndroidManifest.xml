@@ -17,19 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".demo.TestActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
-        <!--demo-->
-        <activity android:name=".demo.ui.FragmentTabHostActivity">
-
-        </activity>
+        </activity> <!-- demo -->
+        <activity android:name=".demo.ui.FragmentTabHostActivity"></activity>
         <activity android:name=".demo.fragment.DemoFragmentActivity" />
         <activity android:name=".demo.listview.ListViewActivity" />
         <activity android:name=".demo.image.ImageActivity" />
@@ -39,13 +35,10 @@
             android:authorities="com.zyc.hezuo.contentproviderdemo.MyFirstContentProvider"
             android:exported="true" />
 
-        <service android:name=".demo.thread.IntentServerDemo" />
-
-        <!--hook demo-->
-        <activity android:name=".demo.hook.HookMainActivity" />
-        <activity android:name=".demo.hook.TestOnClickActivity" />
-        <activity android:name=".demo.hook.TestNotificationActivity" />
-
+        <service android:name=".demo.thread.IntentServerDemo" /> <!-- hook demo -->
+        <activity android:name=".demo.hooktest.HookMainActivity" />
+        <activity android:name=".demo.hooktest.TestOnClickActivity" />
+        <activity android:name=".demo.hooktest.TestNotificationActivity" />
     </application>
 
 </manifest>
