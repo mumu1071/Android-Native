@@ -7,23 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.yangjie.normal.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 
 public class ListViewActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class ListViewActivity extends AppCompatActivity {
         //初始化数据
         List<String> datas = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            datas.add("item " + i);
+            datas.add(String.valueOf(i));
         }
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -43,7 +44,14 @@ public class ListViewActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         //设置Adapter
         recyclerView.setAdapter(new GeneralAdapter(this, datas));
-        layoutManager.scrollToPosition(3);
+        layoutManager.scrollToPosition(10);
+
+        recyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener(layoutManager) {
+            @Override
+            public void onLoadMore(int current_page) {
+                Log.w("yangjietest", "  " + current_page);
+            }
+        });
 
 
     }
@@ -59,20 +67,17 @@ public class ListViewActivity extends AppCompatActivity {
             this.datas = datas;
         }
 
-        //创建ViewHolder
-        @NonNull
-        @Override
-        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            //实例化得到Item布局文件的View对象
-            View v = View.inflate(context, R.layout.demo_item_list_recycler, null);
-            //返回MyViewHolder的对象
-            return new MyViewHolder(v);
-        }
-
         //绑定数据
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            holder.textView.setText(datas.get(position));
+            holder.textView.setText("第" + datas.get(position));
+            Log.w("yangjietest", " 加载 " + datas.get(position));
+
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
+            super.onBindViewHolder(holder, position, payloads);
         }
 
         //返回Item的数量
@@ -81,10 +86,15 @@ public class ListViewActivity extends AppCompatActivity {
             return datas.size();
         }
 
+
+        //创建ViewHolder
+        @NonNull
         @Override
-        public void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull List<Object> payloads) {
-            Log.i("yangjie", datas.get(position));
-            super.onBindViewHolder(holder, position, payloads);
+        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            //实例化得到Item布局文件的View对象
+            View view = LayoutInflater.from(context).inflate(R.layout.demo_item_list_recycler, parent, false);
+            //返回MyViewHolder的对象
+            return new MyViewHolder(view);
         }
 
 
@@ -94,40 +104,9 @@ public class ListViewActivity extends AppCompatActivity {
 
             public MyViewHolder(View itemView) {
                 super(itemView);
-                textView = itemView.findViewById(R.id.text);
+                textView = itemView.findViewById(R.id.tv_str);
             }
         }
     }
-
-    class Advertising {
-        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(2);
-
-        //未上报
-        Map<String,String> commitMap = new HashMap<>();
-
-        //已上报
-        Map<String,String> commitedMap = new HashMap<>();
-
-        //清空
-
-        public void commit(String item) {
-            //校验是否已上报
-            commitedMap.containsKey(item);
-            //
-            scheduledThreadPool.schedule(new Runnable() {
-                @Override
-                public void run() {
-                    //是否已上报
-
-                    //再校验
-//                    commitMap.containsKey()
-
-                    System.out.println("delay 3 seconds");
-                }
-            }, 3, TimeUnit.SECONDS);
-        }
-
-    }
-
 
 }

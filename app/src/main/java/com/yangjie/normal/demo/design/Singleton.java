@@ -1,7 +1,5 @@
 package com.yangjie.normal.demo.design;
 
-import com.yangjie.normal.demo.Test;
-
 /**
  * @author yangjie
  * @description:

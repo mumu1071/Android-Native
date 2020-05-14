@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yangjie.normal">
     <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -17,18 +18,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demo.TestActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- demo -->
-        <activity android:name=".demo.ui.FragmentTabHostActivity"></activity>
+        </activity>
+        <activity android:name=".demo.TestActivity" />
+        <activity android:name=".demo.page.PageActivity" />
+
+
+        <activity android:name=".demo.ui.FragmentTabHostActivity" />
         <activity android:name=".demo.fragment.DemoFragmentActivity" />
         <activity android:name=".demo.listview.ListViewActivity" />
         <activity android:name=".demo.image.ImageActivity" />
+        <activity
+            android:name=".demo.view.DemoViewActivity"
+            tools:ignore="DuplicateActivity" />
+
 
         <provider
             android:name=".demo.provider.MyFirstContentProvider"
