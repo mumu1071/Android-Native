@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.yangjie.normal.R;
 
-public class DemoViewActivity extends AppCompatActivity {
+public class CustomViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

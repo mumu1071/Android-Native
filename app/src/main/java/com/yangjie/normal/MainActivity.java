@@ -9,7 +9,7 @@ import com.yangjie.normal.demo.TestActivity;
 import com.yangjie.normal.demo.hooktest.HookMainActivity;
 import com.yangjie.normal.demo.listview.ListViewActivity;
 import com.yangjie.normal.demo.page.PageActivity;
-import com.yangjie.normal.demo.view.DemoViewActivity;
+import com.yangjie.normal.demo.view.CustomViewActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DemoViewActivity.class));
+                startActivity(new Intent(MainActivity.this, CustomViewActivity.class));
             }
         });
         findViewById(R.id.btn_4).setOnClickListener(new View.OnClickListener() {

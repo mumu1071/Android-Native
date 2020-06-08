@@ -34,7 +34,7 @@
         <activity android:name=".demo.listview.ListViewActivity" />
         <activity android:name=".demo.image.ImageActivity" />
         <activity
-            android:name=".demo.view.DemoViewActivity"
+            android:name=".demo.view.CustomViewActivity"
             tools:ignore="DuplicateActivity" />
 
 
