@@ -33,7 +33,7 @@ public class DrawView extends View {
         super(context, attrs);
     }
 
-    private void drawBasicView(Canvas canvas){
+    private void drawBasicView(Canvas canvas) {
         // TODO Auto-generated method stub
         myPaint = new Paint();// 初始化画笔
         myPaint.setColor(Color.BLACK);
@@ -75,7 +75,7 @@ public class DrawView extends View {
 
     }
 
-    private void drawClip(Canvas canvas){
+    private void drawClip(Canvas canvas) {
         Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         canvas.drawColor(Color.RED);
         RectF rectF = new RectF(50, 50, getWidth(), getHeight());
@@ -84,6 +84,15 @@ public class DrawView extends View {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         canvas.drawBitmap(bitmap, 0, 0, mPaint);
 
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+    }
+
+    @Override
+    protected void onLayout(boolean b, int i, int i1, int i2, int i3) {
     }
 
     @Override

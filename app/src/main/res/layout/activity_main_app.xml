@@ -45,12 +45,6 @@
         android:layout_height="wrap_content"
         android:onClick="onButtonClick"
         android:text="翻页操作" />
-
-    <Button
-        android:id="@+id/btn_7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onButtonClick"
-        android:text="自定义View" />
+    
 
 </LinearLayout>
